@@ -38,6 +38,18 @@ Then open the provided localhost URL.
 - Fixed events are never placed on unspecified days; deduplication removes duplicate label/start/end on the same day.
 - ICS export uses the generated weekly schedule; pick a week start date in the UI to download.
 
+### Prompt Patterns (examples)
+- Checklist/arrow style:
+  - `Fixed: [ ] Office -> Monday, Wednesday, Thursday -> 09:00-17:00`
+  - `Daily: [ ] Workout -> 90 minutes -> between 18:00-21:00`
+  - `Daily: [ ] Skill development -> 2 hours -> high priority`
+- Plain sentences:
+  - `Swimming on Tuesday and Friday 06:30-07:30. Gym every day 17:00-19:00. Dinner 1 hour between 19:30-21:30.`
+- Weekday/weekend:
+  - `Office on weekdays 09:00-17:00. Hiking on weekends 08:00-11:00.`
+- Day bounds:
+  - `Day starts at 06:00 and ends at 22:00. Sleep at 22:00 (hard).`
+
 ## Files
 - `graph.py` — LangGraph pipeline, parsing, scheduling, RAG examples.
 - `tools.py`, `smart_tools.py` — scheduling helpers.
