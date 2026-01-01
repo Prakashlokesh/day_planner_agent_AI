@@ -1,13 +1,14 @@
-# Agentic Day Planner
+# 🗓️ Agentic Day Planner
 
 A local-first weekly scheduler that combines a deterministic parser, lightweight RAG examples, and a LangGraph pipeline to turn free-form prompts into daily plans. It enforces fixed events on specified days, honors daily task windows, and renders a clean UI with ICS export.
 
 ## Features
-- Deterministic prompt parsing for checklists/arrows (e.g., `[ ] Task -> days -> start–end`, duration-only, and windowed tasks).
-- LangGraph + Ollama LLM extraction with embedded examples for structure.
-- Scheduling pipeline: fixed events per day, daily repeat tasks with time windows, deduplication, and clamping to day bounds with a hard sleep block.
-- Streamlit “designer” UI (card-based per day) plus ICS download.
-- Lightweight SQLite preference storage.
+- 🌈 **Format-flexible parsing:** Handles checklists/arrows (`[ ] Task -> days -> start–end`), duration-only tasks, “between” windows, weekdays/weekends/every day, and general time windows.
+- 🧭 **Grounded extraction (RAG + LLM):** LangGraph + Ollama LLM guided by embedded examples to keep JSON structure and day/time mapping consistent.
+- ✅ **Strict day/place rules:** Fixed events only on specified days; daily-repeat tasks honor earliest/latest windows; deduplication removes duplicate label/start/end; schedules clamp to day bounds with a hard sleep block.
+- 🎨 **Designer UI + export:** Streamlit per-day cards with badges for fixed/tasks and priority, plus ICS download.
+- 🔌 **APIs + CLI:** FastAPI `/chat` endpoint and CLI loop (`app.py`) for programmatic or terminal use.
+- 💾 **Lightweight persistence:** SQLite preferences for day bounds, tasks, and fixed events.
 
 ## Requirements
 - Python 3.10+
@@ -30,11 +31,6 @@ python app.py
 streamlit run ui.py
 ```
 Then open the provided localhost URL.
-
-### FastAPI endpoint
-```bash
-uvicorn fast_api:app --reload --port 8000
-```
 
 ## Usage Notes
 - Use 24h times and explicit days for best accuracy (supports “weekdays/weekends/every day”).
